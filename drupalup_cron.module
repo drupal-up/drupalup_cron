@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Declaring hook functions here.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function drupalup_cron_cron() {
+  $sloagan = \Drupal::service('config.factory')->getEditable('system.site')->get('slogan');
+  if (is_numeric($sloagan)) {
+    $sloagan = $sloagan + 1;
+    \Drupal::service('config.factory')->getEditable('system.site')->set(
+      'slogan',
+      $sloagan)->save();
+  }
+  else {
+    \Drupal::service('config.factory')->getEditable('system.site')->set(
+      'slogan',
+      0)->save();
+  }
+}

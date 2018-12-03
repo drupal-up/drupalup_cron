@@ -1,0 +1,4 @@
+name: Drupal Up cron.
+description: Example of triggering a cron event.
+type: module
+core: 8.x
